@@ -21,19 +21,33 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!--dubbo webservice-->
+	<!-- =============================== WEB-SERVICE ============================ -->
+	<!-- **************************dubbo webservice************************** -->
 	<servlet>
-		<servlet-name>dubbo</servlet-name>
+		<servlet-name>dubbo-servlet-webservice</servlet-name>
 		<servlet-class>com.alibaba.dubbo.remoting.http.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>dubbo</servlet-name>
+		<servlet-name>dubbo-servlet-webservice</servlet-name>
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
-	<!-- hession simple -->
+	<!-- **************************dubbo hession************************** -->
+	<servlet>
+         <servlet-name>dubbo-servlet-hession</servlet-name>
+         <servlet-class>com.alibaba.dubbo.remoting.http.servlet.DispatcherServlet</servlet-class>
+         <load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+         <servlet-name>dubbo-servlet-hession</servlet-name>
+         <url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- ================================= HESSIAN =================================== -->
+	<!-- **************************hessian simple************************** -->
+	<!-- 
   	<servlet>
-	  	<servlet-name>singhession</servlet-name>
+	  	<servlet-name>singhessian</servlet-name>
 	  	<servlet-class>com.caucho.hessian.server.HessianServlet</servlet-class>
 	  	<init-param>
 	  		<param-name>service-class</param-name>
@@ -41,9 +55,10 @@
 	  	</init-param>
   	</servlet>
 	<servlet-mapping>
-		<servlet-name>singhession</servlet-name>
-		<url-pattern>/singhession</url-pattern>
+		<servlet-name>singhessian</servlet-name>
+		<url-pattern>/singhessian</url-pattern>
 	</servlet-mapping>
+	 -->
 	
 	<!-- hession with spring -->
 	<!-- [version conflict]

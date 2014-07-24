@@ -6,12 +6,16 @@
 
 	<dubbo:application name="demo" />
 	<!-- DUBBO -->
+	<!-- 
 	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
 	<dubbo:reference id="demoService" interface="cn.kane.service.IDemoService" />
+	 -->
 	<!-- WEBSERVICE -->
 	<!-- 
 	<dubbo:reference id="demoService" interface="cn.kane.service.IDemoService"
 		version="1.0.0" timeout="500" lazy="true" 
 		url="webservice://localhost:8080/dubbo-demo/services/cn.kane.service.IDemoService"/>
 	 -->
+	 <!-- DUBBO-HESSIAN -->
+	<dubbo:reference id="demoService" interface="cn.kane.service.IDemoService" url="hessian://127.0.0.1:8085/cn.kane.service.IDemoService" />
 </beans>
