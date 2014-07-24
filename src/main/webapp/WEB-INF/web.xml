@@ -21,7 +21,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!--dubbo 服务根路径-->
+	<!--dubbo webservice-->
 	<servlet>
 		<servlet-name>dubbo</servlet-name>
 		<servlet-class>com.alibaba.dubbo.remoting.http.servlet.DispatcherServlet</servlet-class>
@@ -31,4 +31,37 @@
 		<servlet-name>dubbo</servlet-name>
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
+	<!-- hession simple -->
+  	<servlet>
+	  	<servlet-name>singhession</servlet-name>
+	  	<servlet-class>com.caucho.hessian.server.HessianServlet</servlet-class>
+	  	<init-param>
+	  		<param-name>service-class</param-name>
+	  		<param-value>cn.kane.service.DemoServiceImpl</param-value>
+	  	</init-param>
+  	</servlet>
+	<servlet-mapping>
+		<servlet-name>singhession</servlet-name>
+		<url-pattern>/singhession</url-pattern>
+	</servlet-mapping>
+	
+	<!-- hession with spring -->
+	<!-- [version conflict]
+	      exception:noSuchMethod GenericTypeResolver.resolveTypeArguments 
+		  cause: dubbo's dependency spring-2.5.6      
+	-->
+	<!-- 
+	<servlet>
+		<servlet-name>springhession</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>namespace</param-name>
+			<param-value>classes/dubbo-server</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springhession</servlet-name>
+		<url-pattern>/springhession/*</url-pattern>
+	</servlet-mapping>  
+	 -->
 </web-app>

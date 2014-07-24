@@ -8,9 +8,9 @@
         ">
 
 	<bean id="demoService" class="cn.kane.service.DemoServiceImpl" />
+	
 	<dubbo:application name="demo" />
-
-	<!-- dubbo -->		
+	<!-- dubbo-dubbo -->		
 	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
 	<dubbo:protocol name="dubbo" port="8100"/>
 	<dubbo:monitor protocol="registry"></dubbo:monitor>
@@ -18,10 +18,16 @@
 	<!-- 
 	 -->
 
-	<!-- webservice -->
+	<!-- dubbo-webservice -->
 	<!-- 
 	<dubbo:protocol name="webservice" port="8080" server="servlet"/>
     <dubbo:service registry="N/A" interface="cn.kane.service.IDemoService" ref="demoService"/>
 	 -->
+	
+	<!-- hession provider --> 
+	<bean name="/demoServiceInSpringHession" class="org.springframework.remoting.caucho.HessianServiceExporter">  
+	     <property name="service" ref="demoService" />  
+	     <property name="serviceInterface" value="cn.kane.service.IDemoService" />  
+	</bean> 
 	
 </beans>
