@@ -8,6 +8,7 @@
         ">
 
 	<bean id="demoService" class="cn.kane.service.DemoServiceImpl" />
+	<bean id="returnMiltyService" class="cn.kane.service.ReturnMultiServiceImpl" />
 	
 	<dubbo:application name="demo" />
 	<!-- dubbo-dubbo -->		
@@ -25,8 +26,9 @@
 	 -->
 
 	<!-- dubbo-hessian -->
-	<dubbo:protocol name="hessian" port="8085"/>
-	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IDemoService" ref="demoService"/>
+	<dubbo:protocol name="hessian" port="8085" serialization="javaserial"/>
+	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IDemoService" ref="demoService" />
+	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IReturnMultiService" ref="returnMiltyService" />
 	
 	<!-- hession provider --> 
 	<!-- 

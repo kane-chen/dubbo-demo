@@ -17,5 +17,6 @@
 		url="webservice://localhost:8080/dubbo-demo/services/cn.kane.service.IDemoService"/>
 	 -->
 	 <!-- DUBBO-HESSIAN -->
-	<dubbo:reference id="demoService" interface="cn.kane.service.IDemoService" url="hessian://127.0.0.1:8085/cn.kane.service.IDemoService" />
+	<dubbo:reference id="demoService" interface="cn.kane.service.IDemoService" url="hessian://127.0.0.1:8085/cn.kane.service.IDemoService"/>
+	<dubbo:reference id="returnMiltyService" interface="cn.kane.service.IReturnMultiService" url="hessian://127.0.0.1:8085/cn.kane.service.IReturnMultiService"/>
 </beans>
