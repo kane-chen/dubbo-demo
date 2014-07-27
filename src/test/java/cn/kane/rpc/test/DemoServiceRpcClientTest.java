@@ -9,7 +9,9 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
+import cn.kane.entity.Activity;
 import cn.kane.entity.MultiTypeEntity;
+import cn.kane.service.IActivityService;
 import cn.kane.service.IDemoService;
 import cn.kane.service.IReturnMultiService;
 
@@ -20,7 +22,9 @@ public class DemoServiceRpcClientTest extends AbstractJUnit4SpringContextTests{
 	private IDemoService demoService ;
 	@Autowired
 	private IReturnMultiService returnMiltyService ;
-
+	@Autowired
+	private IActivityService activityService ;
+	
 	@Before
 	public void testSetup() {
 	}
@@ -35,5 +39,12 @@ public class DemoServiceRpcClientTest extends AbstractJUnit4SpringContextTests{
 	public void testMultiResp(){
 		MultiTypeEntity entity = returnMiltyService.getMultiTypeEntity() ;
 		Assert.notNull(entity);
+	}
+	
+	@Test
+	public void testO2MDao(){
+		Long gameId = 456L ;
+		Activity activity = activityService.getActivityByGameId(gameId ) ;
+		Assert.notNull(activity);
 	}
 }

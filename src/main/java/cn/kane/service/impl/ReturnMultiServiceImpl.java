@@ -1,6 +1,8 @@
-package cn.kane.service;
+package cn.kane.service.impl;
+
 
 import cn.kane.entity.MultiTypeEntity;
+import cn.kane.service.IReturnMultiService;
 
 public class ReturnMultiServiceImpl implements IReturnMultiService {
 

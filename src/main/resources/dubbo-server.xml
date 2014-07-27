@@ -6,12 +6,10 @@
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd
         ">
-
-	<bean id="demoService" class="cn.kane.service.DemoServiceImpl" />
-	<bean id="returnMiltyService" class="cn.kane.service.ReturnMultiServiceImpl" />
-	
+	<!-- dubbo-app-name -->
 	<dubbo:application name="demo" />
-	<!-- dubbo-dubbo -->		
+	
+	<!-- protocol: dubbo-dubbo -->		
 	<!-- 
 	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
 	<dubbo:protocol name="dubbo" port="8100"/>
@@ -19,18 +17,19 @@
 	<dubbo:service protocol="dubbo" interface="cn.kane.service.IDemoService" ref="demoService" version="1.0.0" />
 	 -->
 
-	<!-- dubbo-webservice -->
+	<!-- protocol: dubbo-webservice -->
 	<!-- 
 	<dubbo:protocol name="webservice" port="8080" server="servlet"/>
     <dubbo:service registry="N/A" interface="cn.kane.service.IDemoService" ref="demoService"/>
 	 -->
 
-	<!-- dubbo-hessian -->
+	<!-- protocol: dubbo-hessian -->
 	<dubbo:protocol name="hessian" port="8085" serialization="javaserial"/>
 	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IDemoService" ref="demoService" />
 	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IReturnMultiService" ref="returnMiltyService" />
+	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IActivityService" ref="activityService" />
 	
-	<!-- hession provider --> 
+	<!-- protocol: hession-provider --> 
 	<!-- 
 	<bean name="/demoServiceInSpringHession" class="org.springframework.remoting.caucho.HessianServiceExporter">  
 	     <property name="service" ref="demoService" />  

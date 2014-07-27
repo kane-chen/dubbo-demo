@@ -13,7 +13,7 @@
 	<!-- 定义资源访问路径 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:dubbo-server.xml</param-value>
+		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
 	
 	<!--spring的配置-->

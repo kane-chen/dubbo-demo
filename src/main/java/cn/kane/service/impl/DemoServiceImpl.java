@@ -1,4 +1,7 @@
-package cn.kane.service;
+package cn.kane.service.impl;
+
+
+import cn.kane.service.IDemoService;
 
 public class DemoServiceImpl implements IDemoService {
 
