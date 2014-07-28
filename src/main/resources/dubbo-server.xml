@@ -25,14 +25,16 @@
 	<!-- 
 	<dubbo:protocol name="webservice" port="8080" server="servlet"/>
     <dubbo:service registry="N/A" interface="cn.kane.service.IDemoService" ref="demoService"/>
+	<dubbo:service registry="N/A" interface="cn.kane.service.IReturnMultiService" ref="returnMiltyService" />
+	<dubbo:service registry="N/A" interface="cn.kane.service.IActivityService" ref="activityService" />
 	 -->
 
 	<!-- protocol: dubbo-hessian -->
 	<!-- 
 	<dubbo:protocol name="hessian" port="8085" serialization="javaserial"/>
-	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IDemoService" ref="demoService" />
-	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IReturnMultiService" ref="returnMiltyService" />
-	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IActivityService" ref="activityService" />
+	<dubbo:service registry="N/A" interface="cn.kane.service.IDemoService" ref="demoService" />
+	<dubbo:service registry="N/A" interface="cn.kane.service.IReturnMultiService" ref="returnMiltyService" />
+	<dubbo:service registry="N/A" interface="cn.kane.service.IActivityService" ref="activityService" />
 	 -->
 	
 	<!-- protocol: hession-provider --> 
