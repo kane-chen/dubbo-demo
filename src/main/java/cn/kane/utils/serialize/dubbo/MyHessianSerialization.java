@@ -1,4 +1,4 @@
-package cn.kane.utils;
+package cn.kane.utils.serialize.dubbo;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,7 +9,7 @@ import com.alibaba.dubbo.common.serialize.ObjectInput;
 import com.alibaba.dubbo.common.serialize.ObjectOutput;
 import com.alibaba.dubbo.common.serialize.Serialization;
 
-public class MySerializationBaseHessian implements Serialization {
+public class MyHessianSerialization implements Serialization {
 	/**
 	 * serialize-protocol id
 	 */
@@ -27,16 +27,14 @@ public class MySerializationBaseHessian implements Serialization {
 		return ID;
 	}
 
-	public ObjectOutput serialize(URL arg0, OutputStream arg1)
+	public ObjectOutput serialize(URL url, OutputStream out)
 			throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		return new MyHessian2ObjectOutput(out);
 	}
 
-	public ObjectInput deserialize(URL arg0, InputStream arg1)
+	public ObjectInput deserialize(URL url, InputStream is)
 			throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		return new MyHessian2ObjectInput(is);
 	}
 
 }

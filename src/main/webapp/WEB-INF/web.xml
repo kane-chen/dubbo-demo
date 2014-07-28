@@ -61,10 +61,6 @@
 	 -->
 	
 	<!-- hession with spring -->
-	<!-- [version conflict]
-	      exception:noSuchMethod GenericTypeResolver.resolveTypeArguments 
-		  cause: dubbo's dependency spring-2.5.6      
-	-->
 	<!-- 
 	<servlet>
 		<servlet-name>springhession</servlet-name>

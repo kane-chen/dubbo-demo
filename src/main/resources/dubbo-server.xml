@@ -9,14 +9,18 @@
 	<!-- dubbo-app-name -->
 	<dubbo:application name="demo" />
 	
-	<!-- protocol: dubbo-dubbo -->		
+	<!-- protocol: dubbo-dubbo -->
 	<!-- 
 	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
 	<dubbo:protocol name="dubbo" port="8100"/>
-	<dubbo:monitor protocol="registry"></dubbo:monitor>
+	<dubbo:monitor protocol="registry"/>
 	<dubbo:service protocol="dubbo" interface="cn.kane.service.IDemoService" ref="demoService" version="1.0.0" />
 	 -->
-
+	<dubbo:protocol name="dubbo" port="8085"/>
+	<dubbo:service registry="N/A" protocol="dubbo" interface="cn.kane.service.IDemoService" ref="demoService" version="1.0.0" />
+	<dubbo:service registry="N/A" protocol="dubbo" interface="cn.kane.service.IReturnMultiService" ref="returnMiltyService" version="1.0.0" />
+	<dubbo:service registry="N/A" protocol="dubbo" interface="cn.kane.service.IActivityService" ref="activityService" version="1.0.0" />
+	
 	<!-- protocol: dubbo-webservice -->
 	<!-- 
 	<dubbo:protocol name="webservice" port="8080" server="servlet"/>
@@ -24,17 +28,30 @@
 	 -->
 
 	<!-- protocol: dubbo-hessian -->
+	<!-- 
 	<dubbo:protocol name="hessian" port="8085" serialization="javaserial"/>
 	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IDemoService" ref="demoService" />
 	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IReturnMultiService" ref="returnMiltyService" />
 	<dubbo:service registry="N/A" protocol="hessian" interface="cn.kane.service.IActivityService" ref="activityService" />
+	 -->
 	
 	<!-- protocol: hession-provider --> 
 	<!-- 
-	<bean name="/demoServiceInSpringHession" class="org.springframework.remoting.caucho.HessianServiceExporter">  
+	<bean name="/demoService" class="org.springframework.remoting.caucho.HessianServiceExporter">  
 	     <property name="service" ref="demoService" />  
 	     <property name="serviceInterface" value="cn.kane.service.IDemoService" />  
 	</bean> 
+	<bean name="/returnMiltyService" class="org.springframework.remoting.caucho.HessianServiceExporter">  
+	     <property name="service" ref="returnMiltyService" />  
+	     <property name="serviceInterface" value="cn.kane.service.IReturnMultiService" />  
+	</bean> 
+	<bean name="/activityService" class="org.springframework.remoting.caucho.HessianServiceExporter">  
+	     <property name="service" ref="activityService" />  
+	     <property name="serviceInterface" value="cn.kane.service.IActivityService" />
+	     <property name="serializerFactory" ref="mySerializerFactory"/>  
+	</bean> 
+	<bean id="mySerializerFactory" class="cn.kane.utils.serialize.hessian.HibernateSerializerFactory"/>
 	 -->
+	 
 		
 </beans>

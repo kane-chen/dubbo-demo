@@ -13,15 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.kane.utils;
+package cn.kane.utils.serialize.dubbo;
 
-import com.alibaba.com.caucho.hessian.io.Deserializer;
+import org.hibernate.collection.internal.PersistentBag;
+import org.hibernate.collection.internal.PersistentMap;
+
 import com.alibaba.com.caucho.hessian.io.HessianProtocolException;
+import com.alibaba.com.caucho.hessian.io.Serializer;
 import com.alibaba.com.caucho.hessian.io.SerializerFactory;
 
 public class MyHessian2SerializerFactory extends SerializerFactory {
 
 	public static final SerializerFactory SERIALIZER_FACTORY = new MyHessian2SerializerFactory();
+	
+	private MyHibernateCollectionSerializer serializer = new MyHibernateCollectionSerializer() ; 
 
 	private MyHessian2SerializerFactory() {
 	}
@@ -31,11 +36,13 @@ public class MyHessian2SerializerFactory extends SerializerFactory {
 		return Thread.currentThread().getContextClassLoader();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
-	public Deserializer getDeserializer(Class cl) throws HessianProtocolException{
-		if( cl instanceof Object){
+	public Serializer getSerializer(Class cl) throws HessianProtocolException{
+		if (PersistentMap.class.isAssignableFrom(cl) || PersistentBag.class.isAssignableFrom(cl)) {
+			return serializer ;
 		}
-		return super.getDeserializer(cl);
+		return super.getSerializer(cl);
 	}
 	
 }

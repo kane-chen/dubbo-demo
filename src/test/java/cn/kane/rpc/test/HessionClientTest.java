@@ -24,7 +24,7 @@ public class HessionClientTest extends TestCase{
 	
 	@Test
 	public void testHessionWithSpring() throws MalformedURLException, ClassNotFoundException{
-		String url = "http://localhost:8080/dubbo-demo/springhession/demoServiceInSpringHession";
+		String url = "http://localhost:8080/dubbo-demo/springhession/demoService";
 		demoService = (IDemoService) this.getService(url,IDemoService.class);
 		demoService.sayHi();
 	}

@@ -55,8 +55,9 @@ public class ActivityServiceImpl implements IActivityService {
 	
 	@Override
 	public Activity getActivityByGameId(Long gameId) {
-			String hql = "from Activity where gameId=?";
-			return this.activityDAO.doQueryFirst(hql, gameId);
+		String hql = "from Activity where gameId=?";
+		Activity activity =  this.activityDAO.doQueryFirst(hql, gameId);
+		return activity ;
 	}
 
 }

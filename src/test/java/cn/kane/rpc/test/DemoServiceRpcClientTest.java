@@ -1,5 +1,7 @@
 package cn.kane.rpc.test ;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import cn.kane.entity.Activity;
+import cn.kane.entity.ActivityItem;
 import cn.kane.entity.MultiTypeEntity;
 import cn.kane.service.IActivityService;
 import cn.kane.service.IDemoService;
@@ -39,6 +42,13 @@ public class DemoServiceRpcClientTest extends AbstractJUnit4SpringContextTests{
 	public void testMultiResp(){
 		MultiTypeEntity entity = returnMiltyService.getMultiTypeEntity() ;
 		Assert.notNull(entity);
+	}
+	
+	@Test
+	public void testGetList(){
+		long activityId = 1L;
+		List<ActivityItem> items = activityService.findItemList(activityId ) ;
+		Assert.notEmpty(items);
 	}
 	
 	@Test
