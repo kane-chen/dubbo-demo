@@ -5,28 +5,32 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 	<dubbo:application name="demo" />
+	<!-- DUBBO-REGISTRY -->
+	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
+	<dubbo:reference id="demoService" interface="cn.kane.service.IDemoService" version="1.0.0"/>
+	<dubbo:reference id="returnMiltyService" interface="cn.kane.service.IReturnMultiService" version="1.0.0"/>
+	<dubbo:reference id="activityService" interface="cn.kane.service.IActivityService" version="1.0.0"/>
+
+	<!-- =================== DUBBO WHITHOUT-REGISTRY ================= -->
 	<!-- DUBBO-DUBBO -->
 	<!-- 
-	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
-	<dubbo:reference id="demoService" interface="cn.kane.service.IDemoService" />
-	 -->
 	<dubbo:reference id="demoService" interface="cn.kane.service.IDemoService" url="dubbo://127.0.0.1:8085/cn.kane.service.IDemoService" version="1.0.0"/>
 	<dubbo:reference id="returnMiltyService" interface="cn.kane.service.IReturnMultiService" url="dubbo://127.0.0.1:8085/cn.kane.service.IReturnMultiService" version="1.0.0"/>
 	<dubbo:reference id="activityService" interface="cn.kane.service.IActivityService" url="dubbo://127.0.0.1:8085/cn.kane.service.IActivityService" version="1.0.0"/>
+	 -->
 	<!-- DUBBO-WEBSERVICE -->
 	<!-- 
-	<dubbo:reference id="demoService" interface="cn.kane.service.IDemoService"
-		version="1.0.0" timeout="500" lazy="true" 
+	<dubbo:reference id="demoService" interface="cn.kane.service.IDemoService" version="1.0.0" timeout="500" lazy="true" 
 		url="webservice://localhost:8080/dubbo-demo/services/cn.kane.service.IDemoService"/>
 	 -->
-	 <!-- DUBBO-HESSIAN -->
+	<!-- DUBBO-HESSIAN -->
 	<!-- 
 	<dubbo:reference id="demoService" interface="cn.kane.service.IDemoService" url="hessian://127.0.0.1:8085/cn.kane.service.IDemoService"/>
 	<dubbo:reference id="returnMiltyService" interface="cn.kane.service.IReturnMultiService" url="hessian://127.0.0.1:8085/cn.kane.service.IReturnMultiService"/>
 	<dubbo:reference id="activityService" interface="cn.kane.service.IActivityService" url="hessian://127.0.0.1:8085/cn.kane.service.IActivityService"/>
  	-->
 
-	<!-- HESSIAN-services -->
+	<!-- ===================== HESSIAN =================== -->
 	<!-- 
 	<bean id="demoService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
 		<property name="serviceUrl" value="http://127.0.0.1:8080/dubbo-demo/springhession/demoService"/>

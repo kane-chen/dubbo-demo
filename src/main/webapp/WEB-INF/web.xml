@@ -33,6 +33,7 @@
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
 	<!-- **************************dubbo hession************************** -->
+	<!-- 
 	<servlet>
          <servlet-name>dubbo-servlet-hession</servlet-name>
          <servlet-class>com.alibaba.dubbo.remoting.http.servlet.DispatcherServlet</servlet-class>
@@ -42,6 +43,7 @@
          <servlet-name>dubbo-servlet-hession</servlet-name>
          <url-pattern>/*</url-pattern>
 	</servlet-mapping>
+	 -->
 	
 	<!-- ================================= HESSIAN =================================== -->
 	<!-- **************************hessian simple************************** -->

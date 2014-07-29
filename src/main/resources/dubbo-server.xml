@@ -10,16 +10,28 @@
 	<dubbo:application name="demo" />
 	
 	<!-- protocol: dubbo-dubbo -->
-	<!-- 
 	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
+	<!-- 
 	<dubbo:protocol name="dubbo" port="8100"/>
-	<dubbo:monitor protocol="registry"/>
-	<dubbo:service protocol="dubbo" interface="cn.kane.service.IDemoService" ref="demoService" version="1.0.0" />
 	 -->
+	<dubbo:protocol name="hessian" port="8085"/>
+	<!--  
+	<dubbo:protocol name="webservice" port="8085"/>
+	 -->
+	<dubbo:monitor protocol="registry"/>
+	
+	<dubbo:service interface="cn.kane.service.IDemoService" ref="demoService" version="1.0.0" />
+	<dubbo:service interface="cn.kane.service.IReturnMultiService" ref="returnMiltyService" version="1.0.0" />
+	<dubbo:service interface="cn.kane.service.IActivityService" ref="activityService" version="1.0.0" />
+	
+	<!-- ====================  WITHOUT REGISTRY  ================= -->
+	<!-- protocol: dubbo-dubbo -->
+	<!-- 
 	<dubbo:protocol name="dubbo" port="8085"/>
 	<dubbo:service registry="N/A" protocol="dubbo" interface="cn.kane.service.IDemoService" ref="demoService" version="1.0.0" />
 	<dubbo:service registry="N/A" protocol="dubbo" interface="cn.kane.service.IReturnMultiService" ref="returnMiltyService" version="1.0.0" />
 	<dubbo:service registry="N/A" protocol="dubbo" interface="cn.kane.service.IActivityService" ref="activityService" version="1.0.0" />
+	 -->
 	
 	<!-- protocol: dubbo-webservice -->
 	<!-- 
